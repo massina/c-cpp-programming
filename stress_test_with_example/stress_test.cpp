@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 using std::cin;
 using std::cout;
@@ -50,6 +51,39 @@ long long MaxPairwiseProductFast(vector<int> &numbers)
 
 int main()
 {
+    while (true)
+    {
+        int n = rand() % 10 + 2;
+        cout << n << "\n";
+        vector<int> a;
+
+        for (int i = 0; i < n; i++)
+        {
+            a.push_back(rand() % 100000);
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << a[i] << " ";
+        }
+
+        cout << "\n";
+
+        long long result1 = MaxPairWiseProduct(a);
+        long long result2 = MaxPairwiseProductFast(a);
+
+        if (result1 != result2)
+        {
+            cout << "Wrong: " << result1 << " " << result2 << "\n";
+            break;
+        }
+        else
+        {
+            cout << "OK"
+                 << "\n";
+        }
+    }
+
     int n;
     cin >> n;
     vector<int> numbers(n);
@@ -58,7 +92,7 @@ int main()
         cin >> numbers[i];
     }
 
-    long long result = MaxPairWiseProduct(numbers);
+    long long result = MaxPairwiseProductFast(numbers);
     cout << result << "\n";
     return 0;
 }

@@ -8,12 +8,12 @@ using std::vector;
 long long MaxPairwiseProductFast(vector<int> &numbers)
 {
     int n = numbers.size();
-    int max_index1 = 0;
-    int max_index2 = 0;
+    int max_index1 = -1;
+    int max_index2 = -1;
 
     for (int i = 0; i < n; i++)
     {
-        if (numbers[i] > numbers[max_index1])
+        if (max_index1 == -1 || numbers[i] > numbers[max_index1])
         {
             max_index1 = i;
         }
@@ -21,7 +21,7 @@ long long MaxPairwiseProductFast(vector<int> &numbers)
 
     for (int j = 0; j < n; j++)
     {
-        if (j != max_index1 && numbers[j] > numbers[max_index2])
+        if (j != max_index1 && (max_index2 == -1 || numbers[j] > numbers[max_index2]))
         {
             max_index2 = j;
         }
