@@ -2,9 +2,7 @@
 #include <vector>
 #include <cstdlib>
 
-using std::cin;
-using std::cout;
-using std::vector;
+using namespace std;
 
 long long MaxPairWiseProduct(const vector<int> &numbers)
 {
