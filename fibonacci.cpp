@@ -29,7 +29,7 @@ int fibonacci_fast(int n)
 {
     if (n <= 1)
         return n;
-        
+
     vector<int> a(n + 1);
     int length = a.size();
 
@@ -45,12 +45,35 @@ int fibonacci_fast(int n)
     return a[n];
 }
 
+int fibonacci_less_memory_fast(int n)
+{
+    if (n <= 1)
+        return n;
+
+    int previous = 0;
+    int current = 1;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        int temp = previous;
+        previous = current;
+        current = temp + previous;
+    }
+
+    return current;
+}
+
 void test_solution()
 {
     assert(fibonacci_fast(3) == 2);
     assert(fibonacci_fast(10) == 55);
     for (int n = 0; n < 20; ++n)
         assert(fibonacci_fast(n) == fibonacci_naive(n));
+
+    assert(fibonacci_less_memory_fast(3) == 2);
+    assert(fibonacci_less_memory_fast(10) == 55);
+    for (int n = 0; n < 20; ++n)
+        assert(fibonacci_less_memory_fast(n) == fibonacci_fast(n));
 }
 
 int main()
@@ -59,7 +82,8 @@ int main()
     std::cin >> n;
 
     // std::cout << fibonacci_naive(n) << '\n';
-    // test_solution();
+    test_solution();
     std::cout << fibonacci_fast(n) << '\n';
+    std::cout << fibonacci_less_memory_fast(n) << '\n';
     return 0;
 }
