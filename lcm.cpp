@@ -21,9 +21,26 @@ int gcd_fast(int a, int b)
   return gcd_fast(b, a % b);
 }
 
-long long lcm_fast(int a, int b)
+long long lcm_recursive(int a, int b)
 {
   return ((long long)a * b) / gcd_fast(a, b);
+}
+
+long long lcm_fast(int a, int b)
+{
+  long long d;
+
+  if (a > b)
+    d = a;
+  else
+    d = b;
+
+  while (true)
+  {
+    if (d % a == 0 && d % b == 0)
+      return d;
+    d++;
+  }
 }
 
 void test_solution()
@@ -39,7 +56,7 @@ void test_solution()
     cout << "a: " << a << " b: " << b << endl;
 
     int res1 = lcm_naive(a, b);
-    int res2 = lcm_fast(a, b);
+    int res2 = lcm_recursive(a, b);
 
     if (res1 != res2)
     {
@@ -59,6 +76,6 @@ int main()
   cin >> a >> b;
   // cout << lcm_naive(a, b) << endl;
   // test_solution();
-  cout << lcm_naive(a, b) << endl;
+  cout << lcm_recursive(a, b) << endl;
   return 0;
 }
