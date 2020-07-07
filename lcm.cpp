@@ -74,8 +74,8 @@ int main()
 {
   int a, b;
   cin >> a >> b;
-  // cout << lcm_naive(a, b) << endl;
-  // test_solution();
+  cout << lcm_naive(a, b) << endl;
+  test_solution();
   cout << lcm_recursive(a, b) << endl;
   return 0;
 }
