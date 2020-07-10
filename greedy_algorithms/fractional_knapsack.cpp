@@ -44,10 +44,11 @@ double get_optimal_value(int capacity, vector<int> weights, vector<double> value
     }
 
     double a = min(capacity, weights[max_index]);
-    value += a * ((double)values[max_index] / weights[max_index]);
+    double itemValue = (double)values[max_index] / weights[max_index];
+    value += a * itemValue;
     A[i] += a;
     capacity -= a;
-    values[max_index] -= a * ((double)values[max_index] / weights[max_index]);
+    values[max_index] -= a * itemValue;
     weights[max_index] -= a;
   }
 
