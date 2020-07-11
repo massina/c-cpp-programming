@@ -54,9 +54,10 @@ int main()
     int n = 0;
     cin >> n;
 
-    vector<int> stops(n + 2);
+    n += 2;
+    vector<int> stops(n);
     stops[0] = 0;
-    stops[n + 1] = d;
+    stops[n - 1] = d;
 
     for (size_t i = 1; i < n + 1; ++i)
         cin >> stops.at(i);
